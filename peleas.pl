@@ -3,10 +3,18 @@ entrena(Maestro,Aprendiz):-
     esJoven(Aprendiz),
     viveEnElMismoUniverso(Maestro,Aprendiz).
 
-pelea(Heroe,Villano):-
+%pelea(Heroe,Villano):-
+%    esHeroe(Heroe),
+%    villano(Villano),
+%    viveEnElMismoUniverso(Heroe,Villano).
+
+%Los heroes de starwars pelean contra cualquier personaje
+pelea(Heroe,Alguien):-
     esHeroe(Heroe),
-    villano(Villano),
-    viveEnElMismoUniverso(Heroe,Villano).
+    vive(Heroe,starwars),
+    personaje(Alguien).
+
+personaje(Alguien):-vive(Alguien,Lugar).
 
 viveEnElMismoUniverso(Persona1,Persona2):-
     vive(Persona1,Universo),
@@ -26,11 +34,14 @@ vive(capitan,marvel).
 vive(romero,realidad).
 vive(juanita,realidad).
 vive(jackSparrow,piratas).
+vive(thanos,marvel).
 %vive(romero,marvel).
 
 %% esJoven(Persona):- edad(Persona,Edad),between(8,18,Edad).
 esJoven(Persona):- edad(Persona,Edad), Edad =< 18 .
 esJoven(deadPool).
+
+mayor(X,Y):- X >Y.
 
 edad(anakin,10).
 edad(frodo,11).
@@ -53,3 +64,4 @@ tienePoderes(ironMan).
 tienePoderes(alberto).
 haceElBien(juanita).
 haceElBien(capitan).
+haceElBien(anakin).
