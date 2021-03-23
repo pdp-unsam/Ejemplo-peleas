@@ -14,7 +14,13 @@ pelea(Heroe,Alguien):-
     vive(Heroe,starwars),
     personaje(Alguien).
 
-personaje(Alguien):-vive(Alguien,Lugar).
+
+ayuda(Persona,Alguien):-
+    esHeroe(Persona),
+    personaje(Alguien),
+    not(villano(Alguien)).
+
+personaje(Alguien):-vive(Alguien,_).
 
 viveEnElMismoUniverso(Persona1,Persona2):-
     vive(Persona1,Universo),
@@ -38,15 +44,22 @@ vive(thanos,marvel).
 %vive(romero,marvel).
 
 %% esJoven(Persona):- edad(Persona,Edad),between(8,18,Edad).
-esJoven(Persona):- edad(Persona,Edad), Edad =< 18 .
+esJoven(Persona):-  edad(Persona,Edad),Edad =< 18.
 esJoven(deadPool).
 
-mayor(X,Y):- X >Y.
+mayor(X,Y):- X > Y.
 
 edad(anakin,10).
 edad(frodo,11).
 edad(frankestain,189).
 edad(peterParker,17).
+
+
+leLleva(Per1,Per2,Diferencia):-
+    edad(Per1,Edad1),
+    edad(Per2,Edad2),
+    Diferencia is Edad1 - Edad2.
+
 
 esHeroe(romero).
 esHeroe(Alguien):-haceElBien(Alguien).
@@ -59,6 +72,7 @@ tieneEscuela(Maestro):-
     entrena(Maestro,Aprendiz1),
     entrena(Maestro,Aprendiz2),
     Aprendiz1 \= Aprendiz2.
+    
 
 tienePoderes(ironMan).
 tienePoderes(alberto).
